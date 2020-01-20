@@ -1,0 +1,159 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,400italic,300,700,400);
+//C-color, F-font
+Froboto='Roboto', sans-serif;
+
+
+anim_func=cubic-bezier(0.495, 1.415, 0.760, 1.035)
+
+
+//Postions functions example
+/*absolute: top 150px left 5px*/
+/*fixed: top left*/
+
+-pos(type, args)
+  i = 0
+  position: unquote(type) !important
+  {args[i]}: args[i + 1] is a 'unit' ? args[i += 1]  !important : 0
+  {args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] !important : 0
+absolute()
+  -pos('absolute', arguments)
+
+fixed()
+  -pos('fixed', arguments)
+
+/*vandor prefixes*/
+
+vendors = webkit moz o ms official
+
+border-radius()
+  for vendor in vendors
+    if vendor == official
+      border-radius: arguments
+    else
+      -{vendor}-border-radius: arguments
+
+
+transition()
+  for vendor in vendors
+    if vendor == official
+      transition: arguments
+    else
+      -{vendor}-transition: arguments
+
+
+
+animation()
+  for vendor in vendors
+    if vendor == official
+      animation: arguments
+    else
+      -{vendor}-animation: arguments
+
+transform()
+  for vendor in vendors
+    if vendor == official
+      transform: arguments
+    else
+      -{vendor}-transform: arguments
+
+
+box-shadow()
+  for vendor in vendors
+    if vendor == official
+      box-shadow: arguments
+    else
+      -{vendor}-box-shadow: arguments
+
+
+body,
+html
+  font-family Froboto;
+  margin: 0;
+  padding: 0;
+/*background #f1f1f1*/
+
+html
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background #f1f1f1
+
+
+table
+  border-spacing: 0;
+  margin: 0 auto;
+  box-shadow: 1px 1px 10px rgba(17, 34, 51, 0.08);
+tbody
+  background: #eee;
+  th
+    font-size: 12px;
+    min-width: 60px;
+    line-height: 30px;
+    background: #EEE;
+    COLOR: #1D3A86;
+    cursor pointer
+    position: relative;
+    /*text-align: left;*/
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-right: none;
+    padding-left: 5px;
+    font-weight: 500;
+    i
+      position: absolute;
+      left: 4px;
+      top: 2px;
+      font-size: 18px;
+      color: #aaa;
+      transition all 0.2s ease
+      opacity 0
+      &:hover
+        color #DD0A4A
+    &:hover
+      background #ddd
+      font-weight: 600;
+      i
+        opacity 1
+    &.active
+      background: #D3D5D7;
+  TD
+    padding: 0;
+    border-spacing: 0;
+    background: #fafafa;
+    border: 1px solid #EEE;
+    border-bottom: none;
+    border-right: none;
+  div
+    line-height: 24px;
+    font-size: 12px;
+    padding: 2px;
+    text-align center
+    color: #333;
+  .addRC
+    background: #F5F5F5;
+    cursor pointer
+    &:hover
+      background: #1D3A86;
+      color #fff
+      i
+        color #fff
+    i
+      position: relative;
+      opacity 1
+      top 0
+      left: auto
+      transition  none
+      font-size: 14px;
+      color #1D3A86
+      &:hover
+        color #fff
+
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+  outline:none;
+  background #fff
+  border: 2px solid #6af;
+  color: #000;
+  font-weight 600
+}
